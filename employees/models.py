@@ -25,12 +25,15 @@ class Employees(models.Model):
     gender = models.PositiveIntegerField(choices=GENDER_CHOICES)
     date_of_birth = models.DateField()
     place_of_birth = models.CharField(max_length=255)
-    Positions = models.PositiveIntegerField(choices=Position_CHOICES)
+    position = models.PositiveIntegerField(choices=Position_CHOICES)
     job = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
     nationality = models.CharField(max_length=255)
     marital_status = models.PositiveIntegerField(choices=MARITAL_STATUS_CHOICES)
     salary = models.PositiveIntegerField()
+    activated = models.BooleanField(default=True)
+    added = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def get_absolute_url(self):
         return reverse('employees:detail', kwargs={'pk': self.pk})

@@ -71,7 +71,7 @@ class AddEmployeeForm(forms.ModelForm):
             'gender',
             'date_of_birth',
             'place_of_birth',
-            'Positions',
+            'position',
             'job',
             'country',
             'nationality',

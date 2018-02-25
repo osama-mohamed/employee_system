@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }} | {{ block.super }}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+{#            <div class="thumbnail">#}
+              <div class="caption">
+                <h2>Full Name : {{ object.full_name }}</h2>
+                <p class="lead">First Name : {{ object.first_name }}</p>
+                <p class="lead">Middle Name : {{ object.middle_name }}</p>
+                <p class="lead">Last Name : {{ object.last_name }}</p>
+                <p class="lead">Age : {{ object.age }}</p>
+                <p class="lead">National Identifier : {{ object.national_identifier }}</p>
+                <p class="lead">Gender : {% if object.gender == 1 %}Male {% else %}Female{% endif %}</p>
+                <p class="lead">Date Of Birth : {{ object.date_of_birth }}</p>
+                <p class="lead">Place Of Birth : {{ object.place_of_birth }}</p>
+                <p class="lead">Position : {% if object.position == 1 %} Employee {% elif object.position == 2 %} Manager {% else %}Ceo{% endif %}</p>
+                <p class="lead">Job : {{ object.job }}</p>
+                <p class="lead">Country : {{ object.country }}</p>
+                <p class="lead">Nationality : {{ object.nationality }}</p>
+                <p class="lead">Marital Status : {% if object.marital_status == 1 %}Single {% elif object.marital_status == 2 %}Married{% endif %}</p>
+                <p class="lead">Salary : {{ object.salary }}</p>
+                <p class="lead">Joined In : {{ object.added }}</p>
+                <p class="lead">profile update date : {{ object.updated }}</p>
+              </div>
+            </div>
+{#            </div>#}
+{% endblock %}

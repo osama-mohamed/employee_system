@@ -13,7 +13,7 @@ from .models import Employees
 class AddEmployeeView(CreateView):
     form_class = AddEmployeeForm
     template_name = 'employees/add_new_employee.html'
-    success_url = reverse_lazy('employees:add')
+    success_url = reverse_lazy('employees:all')
 
     def get_context_data(self, **kwargs):
         context = super(AddEmployeeView, self).get_context_data(**kwargs)
@@ -32,7 +32,7 @@ class AllEmployeesView(ListView):
 
 
 class EmployeeDetailView(DetailView):
-    template_name = 'employees/all_employees.html'
+    template_name = 'employees/employee_detail.html'
 
     def get_queryset(self):
         qs = Employees.objects.filter(id=self.kwargs['pk'])
