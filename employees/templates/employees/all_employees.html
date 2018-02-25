@@ -41,9 +41,9 @@
                     <i class="fa fa-times"></i> Delete
                 </button>
                 {% include 'employees/delete_employee_modal.html' %}
-              <br>
-              <br>
               {% if emp.marital_status == 'Married' %}
+                <br>
+                <br>
                 <a href="{% url 'employees:all-relations' emp.id %}" class="btn btn-primary">
                     <i class="fa fa-users"></i> See Relations
                 </a>

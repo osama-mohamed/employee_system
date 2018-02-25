@@ -8,8 +8,14 @@ from django.views.generic import (
     View,
 )
 from django.core.urlresolvers import reverse_lazy, reverse
+from django.contrib import messages
 
-from .forms import AddEmployeeForm, UpdateEmployeeForm, AddRelationForm, UpdateSalaryForm
+from .forms import (
+    AddEmployeeForm,
+    UpdateEmployeeForm,
+    AddRelationForm,
+    UpdateSalaryForm,
+)
 from .models import Employees, Relationship
 
 
@@ -80,15 +86,17 @@ class SalaryUpdateView(UpdateView):
         return context
 
 
-
 class EmployeeDeleteView(DeleteView):
     template_name = 'employees/employee_detail.html'
 
     def post(self, request, pk):
-        qs = Employees.objects.filter(id=pk)
-        if qs.exists() and qs.count() == 1:
-            user = qs.first()
-            user.delete()
+        qs = Employees.objects.filter(id=pk).first()
+        job_status = qs.job
+        if job_status is None or job_status == '':
+            qs.delete()
+            return redirect(reverse('employees:all'))
+        else:
+            messages.error(request, 'you can not delete this employee because he has a job')
             return redirect(reverse('employees:all'))
 
 
