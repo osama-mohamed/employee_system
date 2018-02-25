@@ -17,7 +17,6 @@
                 <p>Date Of Birth : {{ emp.date_of_birth }}</p>
               </div>
                 <a href="{% url 'employees:update-relation' emp.id %}" class="btn btn-info">Update</a>
-{#                <a href="{% url 'employees:delete-relation' emp.id %}" class="btn btn-danger">Delete</a>#}
                 <!-- Button trigger modal -->
                 <button class="btn btn-danger" href="" data-toggle="modal" data-target="#delete_relation{{ emp.id }}">
                     Delete

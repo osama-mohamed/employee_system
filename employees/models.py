@@ -4,17 +4,17 @@ from django.core.urlresolvers import reverse
 
 class Employees(models.Model):
     GENDER_CHOICES = [
-        (1, 'Male'),
-        (2, 'Female'),
+        ('Male', 'Male'),
+        ('Female', 'Female'),
     ]
     Position_CHOICES = [
-        (1, 'Employee'),
-        (2, 'Manager'),
-        (3, 'CEO'),
+        ('Employee', 'Employee'),
+        ('Manager', 'Manager'),
+        ('CEO', 'CEO'),
     ]
     MARITAL_STATUS_CHOICES = [
-        (1, 'Single'),
-        (2, 'Married'),
+        ('Single', 'Single'),
+        ('Married', 'Married'),
     ]
     first_name = models.CharField(max_length=255)
     middle_name = models.CharField(max_length=255)
@@ -22,14 +22,14 @@ class Employees(models.Model):
     full_name = models.CharField(max_length=500)
     national_identifier = models.BigIntegerField()
     age = models.PositiveIntegerField()
-    gender = models.PositiveIntegerField(choices=GENDER_CHOICES)
+    gender = models.CharField(choices=GENDER_CHOICES, max_length=25)
     date_of_birth = models.DateField()
     place_of_birth = models.CharField(max_length=255)
-    position = models.PositiveIntegerField(choices=Position_CHOICES)
+    position = models.CharField(choices=Position_CHOICES, max_length=25)
     job = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
     nationality = models.CharField(max_length=255)
-    marital_status = models.PositiveIntegerField(choices=MARITAL_STATUS_CHOICES)
+    marital_status = models.CharField(choices=MARITAL_STATUS_CHOICES, max_length=25)
     salary = models.PositiveIntegerField()
     activated = models.BooleanField(default=True)
     added = models.DateTimeField(auto_now_add=True)

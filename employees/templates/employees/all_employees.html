@@ -17,10 +17,11 @@
 {#                <p>Last Name : {{ emp.last_name }}</p>#}
                 <p>Age : {{ emp.age }}</p>
 {#                <p>National Identifier : {{ emp.national_identifier }}</p>#}
-                <p>Gender : {% if emp.gender == 1 %}Male {% else %}Female{% endif %}</p>
+                <p>Gender : {{ emp.gender }}</p>
+{#                <p>Gender : {% if emp.gender == 1 %}Male {% else %}Female{% endif %}</p>#}
 {#                <p>Date Of Birth : {{ emp.date_of_birth }}</p>#}
 {#                <p>Place Of Birth : {{ emp.place_of_birth }}</p>#}
-                <p>Position : {% if emp.position == 1 %} Employee {% elif emp.position == 2 %} Manager {% else %}Ceo{% endif %}</p>
+                <p>Position : {{ emp.position }}</p>
                 <p>Job : {{ emp.job }}</p>
 {#                <p>Country : {{ emp.country }}</p>#}
 {#                <p>Nationality : {{ emp.nationality }}</p>#}
@@ -36,7 +37,7 @@
                 {% include 'employees/delete_employee_modal.html' %}
               <br>
               <br>
-              {% if emp.marital_status == 2 %}
+              {% if emp.marital_status == 'Married' %}
                 <a href="{% url 'employees:all-relations' emp.id %}" class="btn btn-primary">See Relations</a>
                 <a href="{% url 'employees:add-relation' emp.id %}" class="btn btn-success">Add Relation</a>
               {% endif %}
