@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 
 class Employees(models.Model):
@@ -31,3 +32,5 @@ class Employees(models.Model):
     marital_status = models.PositiveIntegerField(choices=MARITAL_STATUS_CHOICES)
     salary = models.PositiveIntegerField()
 
+    def get_absolute_url(self):
+        return reverse('employees:detail', kwargs={'pk': self.pk})
