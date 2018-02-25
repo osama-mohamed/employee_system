@@ -29,6 +29,7 @@
 {#                <p>Salary : {{ emp.salary }}</p>#}
                 <a href="{% url 'employees:detail' emp.id %}" class="btn btn-primary">See Profile</a>
                 <a href="{% url 'employees:update' emp.id %}" class="btn btn-info">Update</a>
+                <a href="{% url 'employees:update-salary' emp.id %}" class="btn btn-info">Update Salary</a>
 {#                <a href="{% url 'employees:delete' emp.id %}" class="btn btn-danger">Delete</a>#}
                 <!-- Button trigger modal -->
                 <button class="btn btn-danger" href="" data-toggle="modal" data-target="#delete_employee{{ emp.id }}">

@@ -9,7 +9,7 @@ from django.views.generic import (
 )
 from django.core.urlresolvers import reverse_lazy, reverse
 
-from .forms import AddEmployeeForm, UpdateEmployeeForm, AddRelationForm
+from .forms import AddEmployeeForm, UpdateEmployeeForm, AddRelationForm, UpdateSalaryForm
 from .models import Employees, Relationship
 
 
@@ -63,6 +63,22 @@ class EmployeeUpdateView(UpdateView):
         context = super(EmployeeUpdateView, self).get_context_data(**kwargs)
         context['title'] = 'Update Employee'
         return context
+
+
+class SalaryUpdateView(UpdateView):
+    form_class = UpdateSalaryForm
+    model = Employees
+    template_name = 'employees/employee_update.html'
+
+    def get_queryset(self):
+        qs = Employees.objects.filter(id=self.kwargs['pk'], activated=True)
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super(SalaryUpdateView, self).get_context_data(**kwargs)
+        context['title'] = 'Update Salary'
+        return context
+
 
 
 class EmployeeDeleteView(DeleteView):

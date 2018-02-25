@@ -38,7 +38,7 @@ class AddEmployeeForm(forms.ModelForm):
             'placeholder': 'Place Of Birth',
             'class': 'form-control',
         }))
-    job = forms.CharField(label='Job', widget=forms.TextInput(
+    job = forms.CharField(label='Job', required=False, widget=forms.TextInput(
         attrs={
             'placeholder': 'Job',
             'class': 'form-control',
@@ -137,7 +137,7 @@ class UpdateEmployeeForm(forms.ModelForm):
             'placeholder': 'Place Of Birth',
             'class': 'form-control',
         }))
-    job = forms.CharField(label='Job', widget=forms.TextInput(
+    job = forms.CharField(label='Job', required=False, widget=forms.TextInput(
         attrs={
             'placeholder': 'Job',
             'class': 'form-control',
@@ -175,6 +175,34 @@ class UpdateEmployeeForm(forms.ModelForm):
             'country',
             'nationality',
             'marital_status',
+            'salary',
+        ]
+
+    def clean_salary(self):
+        salary = self.cleaned_data.get('salary')
+        position = self.cleaned_data.get('position')
+        if position == 'Employee':
+            if int(salary) < 5000 or int(salary) > 10000:
+                raise forms.ValidationError('salary for employee must be between 5000-10000')
+        if position == 'Manager':
+            if int(salary) < 10000 or int(salary) > 19000:
+                raise forms.ValidationError('salary for manager must be between 10000-19000')
+        if position == 'CEO':
+            if int(salary) < 19000 or int(salary) > 25000:
+                raise forms.ValidationError('salary for CEO must be between 19000-25000')
+        return salary
+
+
+class UpdateSalaryForm(forms.ModelForm):
+    salary = forms.CharField(label='Salary', widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Salary',
+            'class': 'form-control',
+        }))
+
+    class Meta:
+        model = Employees
+        fields = [
             'salary',
         ]
 
