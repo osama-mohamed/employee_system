@@ -34,6 +34,9 @@
                     Delete
                 </button>
                 {% include 'employees/delete_employee_modal.html' %}
+              {% if emp.marital_status == 2 %}
+                <a href="{% url 'employees:add-relation' emp.id %}" class="btn btn-success">Add Relation</a>
+              {% endif %}
               </div>
             </div>
             </div>

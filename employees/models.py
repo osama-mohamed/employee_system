@@ -35,5 +35,27 @@ class Employees(models.Model):
     added = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.full_name
+
     def get_absolute_url(self):
         return reverse('employees:detail', kwargs={'pk': self.pk})
+
+
+class Relationship(models.Model):
+    RELATIONSHIP_TYPE_CHOICES = [
+        ('wife', 'Wife'),
+        ('child', 'Child'),
+        ('husband', 'Husband'),
+    ]
+    employee = models.ForeignKey(Employees, on_delete=models.CASCADE)
+    relationship_type = models.CharField(choices=RELATIONSHIP_TYPE_CHOICES, max_length=25)
+    name = models.CharField(max_length=255)
+    age = models.PositiveIntegerField()
+    date_of_birth = models.DateField()
+    added = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.employee
+

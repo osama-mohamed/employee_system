@@ -5,11 +5,12 @@ from django.views.generic import (
     DetailView,
     UpdateView,
     DeleteView,
+    View,
 )
 from django.core.urlresolvers import reverse_lazy, reverse
 
-from .forms import AddEmployeeForm, UpdateEmployeeForm
-from .models import Employees
+from .forms import AddEmployeeForm, UpdateEmployeeForm, AddRelationForm
+from .models import Employees, Relationship
 
 
 class AddEmployeeView(CreateView):
@@ -74,3 +75,39 @@ class EmployeeDeleteView(DeleteView):
             user = qs.first()
             user.delete()
             return redirect(reverse('employees:all'))
+
+
+class AddRelationView(View):
+    form_class = AddRelationForm
+    template_name = 'employees/add_new_employee.html'
+    success_url = reverse_lazy('employees:all')
+
+    # def get_queryset(self):
+    #     qs = Employees.objects.filter(id=self.kwargs['pk'], activated=True, marital_status=2)
+    #     return qs
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(AddRelationView, self).get_context_data(**kwargs)
+    #     context['title'] = 'Add Relation'
+    #     return context
+
+    def get(self, request, pk):
+        form = self.form_class(None)
+        context = {
+            'form': form,
+            'title': 'Add Relation'
+        }
+        return render(request, self.template_name, context)
+
+    def post(self, request, pk):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            qs = Employees.objects.filter(id=pk, activated=True).first()
+            relation = Relationship.objects.create(
+                employee=qs,
+                relationship_type=form.cleaned_data.get('relationship_type'),
+                name=form.cleaned_data.get('name'),
+                age=form.cleaned_data.get('age'),
+                date_of_birth=form.cleaned_data.get('date_of_birth'),
+            )
+            return redirect('employees:all')

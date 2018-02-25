@@ -1,5 +1,5 @@
 from django import forms
-from .models import Employees
+from .models import Employees, Relationship
 
 
 class AddEmployeeForm(forms.ModelForm):
@@ -87,8 +87,6 @@ class AddEmployeeForm(forms.ModelForm):
         return national_identifier
 
 
-
-
 class UpdateEmployeeForm(forms.ModelForm):
     first_name = forms.CharField(label='First name', widget=forms.TextInput(
         attrs={
@@ -164,4 +162,52 @@ class UpdateEmployeeForm(forms.ModelForm):
             'nationality',
             'marital_status',
             'salary',
+        ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class AddRelationForm(forms.ModelForm):
+    name = forms.CharField(label='Name', widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Name',
+            'class': 'form-control',
+        }))
+    age = forms.CharField(label='Age', widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Age',
+            'class': 'form-control',
+        }))
+    date_of_birth = forms.CharField(label='Date Of Birth', widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Date Of Birth',
+            'class': 'form-control',
+        }))
+
+    class Meta:
+        model = Relationship
+        fields = [
+            'relationship_type',
+            'name',
+            'age',
+            'date_of_birth',
         ]
