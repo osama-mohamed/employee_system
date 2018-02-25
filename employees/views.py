@@ -25,7 +25,6 @@ class AddEmployeeView(CreateView):
 
 
 class AllEmployeesView(ListView):
-    # queryset = Employees.objects.all().order_by('-id')
     template_name = 'employees/all_employees.html'
 
     def get_queryset(self):
@@ -79,17 +78,7 @@ class EmployeeDeleteView(DeleteView):
 
 class AddRelationView(View):
     form_class = AddRelationForm
-    template_name = 'employees/add_new_employee.html'
-    success_url = reverse_lazy('employees:all')
-
-    # def get_queryset(self):
-    #     qs = Employees.objects.filter(id=self.kwargs['pk'], activated=True, marital_status=2)
-    #     return qs
-
-    # def get_context_data(self, **kwargs):
-    #     context = super(AddRelationView, self).get_context_data(**kwargs)
-    #     context['title'] = 'Add Relation'
-    #     return context
+    template_name = 'employees/add_new_relation.html'
 
     def get(self, request, pk):
         form = self.form_class(None)
@@ -111,3 +100,43 @@ class AddRelationView(View):
                 date_of_birth=form.cleaned_data.get('date_of_birth'),
             )
             return redirect('employees:all')
+
+
+class AllRelationsView(ListView):
+    template_name = 'employees/all_relations.html'
+
+    def get_queryset(self):
+        qs = Relationship.objects.filter(employee_id=self.kwargs['pk']).order_by('-id')
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super(AllRelationsView, self).get_context_data(**kwargs)
+        context['title'] = 'All Relations'
+        return context
+
+
+class UpdateRelationView(UpdateView):
+    form_class = AddRelationForm
+    model = Relationship
+    template_name = 'employees/add_new_relation.html'
+    success_url = reverse_lazy('employees:all')
+
+    def get_queryset(self):
+        qs = Relationship.objects.filter(id=self.kwargs['pk'])
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super(UpdateRelationView, self).get_context_data(**kwargs)
+        context['title'] = 'Update Relation'
+        return context
+
+
+class DeleteRelationView(DeleteView):
+    template_name = 'employees/all_relations.html'
+
+    def post(self, request, pk):
+        qs = Relationship.objects.filter(id=pk)
+        if qs.exists() and qs.count() == 1:
+            relation = qs.first()
+            relation.delete()
+            return redirect(reverse('employees:all'))

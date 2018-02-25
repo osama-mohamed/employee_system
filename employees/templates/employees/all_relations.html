@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }} | {{ block.super }}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <br>
+        {% for emp in object_list %}
+            <div class="col-sm-4">
+            <div class="thumbnail">
+              <div class="caption">
+                <h4>Name : {{ emp.name }}</h4>
+                <p>Relationship Type : {{ emp.relationship_type }}</p>
+                <p>Age : {{ emp.age }}</p>
+                <p>Date Of Birth : {{ emp.date_of_birth }}</p>
+              </div>
+                <a href="{% url 'employees:update-relation' emp.id %}" class="btn btn-info">Update</a>
+{#                <a href="{% url 'employees:delete-relation' emp.id %}" class="btn btn-danger">Delete</a>#}
+                <!-- Button trigger modal -->
+                <button class="btn btn-danger" href="" data-toggle="modal" data-target="#delete_relation{{ emp.id }}">
+                    Delete
+                </button>
+                {% include 'employees/delete_relation_modal.html' %}
+            </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

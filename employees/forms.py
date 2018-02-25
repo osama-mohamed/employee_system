@@ -165,27 +165,6 @@ class UpdateEmployeeForm(forms.ModelForm):
         ]
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class AddRelationForm(forms.ModelForm):
     name = forms.CharField(label='Name', widget=forms.TextInput(
         attrs={
