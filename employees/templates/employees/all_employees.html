@@ -8,7 +8,7 @@
     <div class="row">
         <br>
         {% for emp in object_list %}
-            <div class="col-sm-3">
+            <div class="col-sm-4">
             <div class="thumbnail">
               <div class="caption">
                 <h4>Full Name : {{ emp.full_name }}</h4>
@@ -27,6 +27,13 @@
 {#                <p>Marital Status : {% if emp.marital_status == 1 %}Single {% elif emp.marital_status == 2 %}Married{% endif %}</p>#}
 {#                <p>Salary : {{ emp.salary }}</p>#}
                 <a href="{% url 'employees:detail' emp.id %}" class="btn btn-primary">See Profile</a>
+                <a href="{% url 'employees:update' emp.id %}" class="btn btn-info">Update</a>
+{#                <a href="{% url 'employees:delete' emp.id %}" class="btn btn-danger">Delete</a>#}
+                <!-- Button trigger modal -->
+                <button class="btn btn-danger" href="" data-toggle="modal" data-target="#delete_employee{{ emp.id }}">
+                    Delete
+                </button>
+                {% include 'employees/delete_employee_modal.html' %}
               </div>
             </div>
             </div>
