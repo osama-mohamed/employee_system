@@ -199,11 +199,23 @@ class UpdateSalaryForm(forms.ModelForm):
             'placeholder': 'Salary',
             'class': 'form-control',
         }))
+    deduction = forms.CharField(label='Deduction', widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Deduction',
+            'class': 'form-control',
+        }))
+    earning = forms.CharField(label='Earning', widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Earning',
+            'class': 'form-control',
+        }))
 
     class Meta:
         model = Employees
         fields = [
             'salary',
+            'deduction',
+            'earning',
         ]
 
 

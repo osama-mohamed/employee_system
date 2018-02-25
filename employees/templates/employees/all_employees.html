@@ -11,7 +11,7 @@
             <div class="col-sm-4">
             <div class="thumbnail">
               <div class="caption">
-                <h4>Full Name : {{ emp.full_name }}</h4>
+                  <h4>Full Name : <a href="{% url 'employees:detail' emp.id %}">{{ emp.full_name }}</a></h4>
 {#                <p class="lead">First Name : {{ emp.first_name }}</p>#}
 {#                <p>Middle Name : {{ emp.middle_name }}</p>#}
 {#                <p>Last Name : {{ emp.last_name }}</p>#}
@@ -27,20 +27,29 @@
 {#                <p>Nationality : {{ emp.nationality }}</p>#}
 {#                <p>Marital Status : {% if emp.marital_status == 1 %}Single {% elif emp.marital_status == 2 %}Married{% endif %}</p>#}
 {#                <p>Salary : {{ emp.salary }}</p>#}
-                <a href="{% url 'employees:detail' emp.id %}" class="btn btn-primary">See Profile</a>
-                <a href="{% url 'employees:update' emp.id %}" class="btn btn-info">Update</a>
-                <a href="{% url 'employees:update-salary' emp.id %}" class="btn btn-info">Update Salary</a>
-{#                <a href="{% url 'employees:delete' emp.id %}" class="btn btn-danger">Delete</a>#}
+{#                <a href="{% url 'employees:detail' emp.id %}" class="btn btn-primary">#}
+{#                    See Profile#}
+{#                </a>#}
+                <a href="{% url 'employees:update' emp.id %}" class="btn btn-info">
+                    <i class="fa fa-user"></i> Update
+                </a>
+                <a href="{% url 'employees:update-salary' emp.id %}" class="btn btn-default">
+                    <i class="fa fa-dollar-sign"></i>  Update Salary
+                </a>
                 <!-- Button trigger modal -->
                 <button class="btn btn-danger" href="" data-toggle="modal" data-target="#delete_employee{{ emp.id }}">
-                    Delete
+                    <i class="fa fa-times"></i> Delete
                 </button>
                 {% include 'employees/delete_employee_modal.html' %}
               <br>
               <br>
               {% if emp.marital_status == 'Married' %}
-                <a href="{% url 'employees:all-relations' emp.id %}" class="btn btn-primary">See Relations</a>
-                <a href="{% url 'employees:add-relation' emp.id %}" class="btn btn-success">Add Relation</a>
+                <a href="{% url 'employees:all-relations' emp.id %}" class="btn btn-primary">
+                    <i class="fa fa-users"></i> See Relations
+                </a>
+                <a href="{% url 'employees:add-relation' emp.id %}" class="btn btn-success">
+                    <i class="fa fa-plus"></i> Add Relation
+                </a>
               {% endif %}
               </div>
             </div>
