@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import (
     CreateView,
     ListView,
@@ -95,8 +95,8 @@ class SalaryUpdateView(UpdateView):
 class EmployeeDeleteView(DeleteView):
     template_name = 'employees/employee_detail.html'
 
-    def post(self, request, pk):
-        qs = Employees.objects.filter(id=pk, freeze=False).first()
+    def post(self, *args, **kwargs):
+        qs = Employees.objects.filter(id=self.kwargs['pk'], freeze=False).first()
         job_status = qs.job
         if job_status is None or job_status == '':
             qs.delete()
@@ -104,7 +104,7 @@ class EmployeeDeleteView(DeleteView):
         else:
             qs.freeze = True
             qs.save()
-            messages.error(request, 'you can not delete this employee because he has a job')
+            messages.error(self.request, 'you can not delete this employee because he has a job')
             return redirect(reverse('employees:all'))
 
 
