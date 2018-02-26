@@ -10,18 +10,20 @@ class TestCalls(TestCase):
                                     'middle_name': 'octocat',
                                     'last_name': 'octocat',
                                     'full_name': 'octocat',
-                                    'national_identifier': '123456789101112',
+                                    'national_identifier': 123456789101112,
                                     'age': 23,
-                                    'gender': 'Male',
+                                    'gender': [1],
                                     'date_of_birth': '1994-10-01',
                                     'place_of_birth': 'Fayoum',
-                                    'position': 'Employee',
+                                    'position': [1],
                                     'job': 'developer',
                                     'country': 'Fayoum',
                                     'nationality': 'Egyptian',
-                                    'marital_status': 'Single',
-                                    'salary': '5000',
+                                    'marital_status': [1],
+                                    'salary': 5000,
                                     }
                                     )
         self.assertEqual(response.status_code, 200)
-        print(response.context)
+        self.assertTemplateUsed(response, 'employees/add_new_employee.html')
+        self.assertContains(response, 'developer')
+
