@@ -25,6 +25,3 @@ class TestCalls(TestCase):
                                     )
         self.assertEqual(response.status_code, 200)
         print(response.context)
-        # self.assertEqual(len(response.context['user_one']), 9)
-        # self.assertEqual(len(response.context['user_one']['login']), 16)
-        # self.assertEqual(response.context['user_one']['login'], 'OSAMAMOHAMED1234')
