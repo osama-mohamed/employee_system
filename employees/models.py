@@ -61,7 +61,7 @@ class Relationship(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.employee
+        return self.relationship_type
 
 
 def post_save_employee_receiver(sender, instance, created, *args, **kwargs):

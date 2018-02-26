@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Employees, Relationship
+
+
+admin.site.register(Employees)
+admin.site.register(Relationship)

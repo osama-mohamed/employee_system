@@ -44,16 +44,20 @@
                     <i class="fa fa-times"></i> Delete
                 </button>
                 {% include 'employees/delete_employee_modal.html' %}
-              {% if emp.marital_status == 'Married' %}
-                <br>
-                <br>
-                <a href="{% url 'employees:all-relations' emp.id %}" class="btn btn-primary">
-                    <i class="fa fa-users"></i> See Relations
-                </a>
-                <a href="{% url 'employees:add-relation' emp.id %}" class="btn btn-success">
-                    <i class="fa fa-plus"></i> Add Relation
-                </a>
-              {% endif %}
+                  {% if emp.marital_status == 'Married' %}
+                    <br>
+                    <br>
+                    <a href="{% url 'employees:all-relations' emp.id %}" class="btn btn-primary">
+                        <i class="fa fa-users"></i> See Relations
+                    </a>
+                    <a href="{% url 'employees:add-relation' emp.id %}" class="btn btn-success">
+                        <i class="fa fa-plus"></i> Add Relation
+                    </a>
+                  {% else %}
+                      <br>
+                      <br>
+                      <p class="lead text-center">This employee is single</p>
+                  {% endif %}
               {% endif %}
               </div>
             </div>
