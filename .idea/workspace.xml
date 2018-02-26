@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44818d28-d223-4cd3-8af5-986da1b8554e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employees/templates/employees/employee_detail.html" afterPath="$PROJECT_DIR$/employees/templates/employees/employee_detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/includes/nav_bar.html" afterPath="$PROJECT_DIR$/templates/includes/nav_bar.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,7 +13,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="tests.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/employees/tests.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="339">
@@ -21,6 +21,16 @@
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nav_bar.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/includes/nav_bar.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="26" column="75" lean-forward="false" selection-start-line="26" selection-start-column="75" selection-end-line="26" selection-end-column="75" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -49,7 +59,6 @@
         <option value="$PROJECT_DIR$/employee/urls.py" />
         <option value="$PROJECT_DIR$/employees/templates/employees/employee_update.html" />
         <option value="$PROJECT_DIR$/employees/templates/employees/delete_employee_modal.html" />
-        <option value="$PROJECT_DIR$/templates/includes/nav_bar.html" />
         <option value="$PROJECT_DIR$/employees/templates/employees/add_new_relation.html" />
         <option value="$PROJECT_DIR$/employees/templates/employees/delete_relation_modal.html" />
         <option value="$PROJECT_DIR$/employees/urls.py" />
@@ -65,6 +74,7 @@
         <option value="$PROJECT_DIR$/employee/settings.py" />
         <option value="$PROJECT_DIR$/employees/templates/employees/all_employees.html" />
         <option value="$PROJECT_DIR$/employees/templates/employees/employee_detail.html" />
+        <option value="$PROJECT_DIR$/templates/includes/nav_bar.html" />
       </list>
     </option>
   </component>
@@ -124,6 +134,17 @@
               <item name="employees" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="employees" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="employee" type="b2602c69:ProjectViewProjectNode" />
+              <item name="employee" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="employee" type="b2602c69:ProjectViewProjectNode" />
+              <item name="employee" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="includes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -309,14 +330,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/includes/nav_bar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="26" column="49" lean-forward="true" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -452,6 +465,14 @@
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/includes/nav_bar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="26" column="75" lean-forward="false" selection-start-line="26" selection-start-column="75" selection-end-line="26" selection-end-column="75" />
+          <folding />
         </state>
       </provider>
     </entry>
