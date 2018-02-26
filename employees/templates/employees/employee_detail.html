@@ -34,8 +34,8 @@
                 <p class="lead">Earning : {{ object.earning }}</p>
                 <p class="lead">Deduction : {{ object.deduction }}</p>
                 <p class="lead">Net Salary : {{ object.salary |add:object.earning |sub:object.deduction }}</p>
-                <p class="lead">Joined In : {{ object.added | timesince}}</p>
-                <p class="lead">profile update date : {{ object.updated | timesince}}</p>
+                <p class="lead">Joined In : {{ object.added | timesince}} ago.</p>
+                <p class="lead">profile update date : {{ object.updated | timesince}} ago.</p>
             </div>
         </div>
     </div>
