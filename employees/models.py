@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.db.models.signals import post_save
 
 
 class Employees(models.Model):
@@ -60,3 +61,29 @@ class Relationship(models.Model):
 
     def __str__(self):
         return self.employee
+
+
+def post_save_employee_receiver(sender, instance, created, *args, **kwargs):
+    if created:
+        qs = Employees.objects.filter(id=instance.id, national_identifier=instance.national_identifier)
+        if qs.exists() and qs.count() == 1:
+            employee = qs.first()
+            position = employee.position
+            if position == 'Employee':
+                deduction = (employee.salary * 7.5) / 100
+                employee.deduction = deduction
+                employee.earning = deduction
+                employee.save()
+            if position == 'Manager':
+                deduction = (employee.salary * 12) / 100
+                employee.deduction = deduction
+                employee.earning = deduction
+                employee.save()
+            if position == 'CEO':
+                deduction = (employee.salary * 15) / 100
+                employee.deduction = deduction
+                employee.earning = deduction
+                employee.save()
+
+
+post_save.connect(post_save_employee_receiver, sender=Employees)
