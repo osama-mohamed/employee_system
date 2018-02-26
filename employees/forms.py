@@ -23,15 +23,23 @@ class AddEmployeeForm(forms.ModelForm):
             'placeholder': 'Full name',
             'class': 'form-control',
         }))
-    national_identifier = forms.CharField(label='National Identifier', widget=forms.TextInput(
+    national_identifier = forms.IntegerField(label='National Identifier', widget=forms.TextInput(
         attrs={
             'placeholder': 'National Identifier',
             'class': 'form-control',
+            'type': 'number',
         }))
-    age = forms.CharField(label='Age', widget=forms.TextInput(
+    age = forms.IntegerField(label='Age', widget=forms.TextInput(
         attrs={
             'placeholder': 'Age',
             'class': 'form-control',
+            'type': 'number',
+        }))
+    date_of_birth = forms.DateField(label='Date Of Birth', widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Date Of Birth',
+            'class': 'form-control',
+            'type': 'date',
         }))
     place_of_birth = forms.CharField(label='Place Of Birth', widget=forms.TextInput(
         attrs={
@@ -53,10 +61,11 @@ class AddEmployeeForm(forms.ModelForm):
             'placeholder': 'Nationality',
             'class': 'form-control',
         }))
-    salary = forms.CharField(label='Salary', widget=forms.TextInput(
+    salary = forms.IntegerField(label='Salary', widget=forms.TextInput(
         attrs={
             'placeholder': 'Salary',
             'class': 'form-control',
+            'type': 'number',
         }))
 
     class Meta:
@@ -122,15 +131,23 @@ class UpdateEmployeeForm(forms.ModelForm):
             'placeholder': 'Full name',
             'class': 'form-control',
         }))
-    national_identifier = forms.CharField(label='National Identifier', widget=forms.TextInput(
+    national_identifier = forms.IntegerField(label='National Identifier', widget=forms.TextInput(
         attrs={
             'placeholder': 'National Identifier',
             'class': 'form-control',
+            'type': 'number',
         }))
-    age = forms.CharField(label='Age', widget=forms.TextInput(
+    age = forms.IntegerField(label='Age', widget=forms.TextInput(
         attrs={
             'placeholder': 'Age',
             'class': 'form-control',
+            'type': 'number',
+        }))
+    date_of_birth = forms.DateField(label='Date Of Birth', widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Date Of Birth',
+            'class': 'form-control',
+            'type': 'date',
         }))
     place_of_birth = forms.CharField(label='Place Of Birth', widget=forms.TextInput(
         attrs={
@@ -152,11 +169,6 @@ class UpdateEmployeeForm(forms.ModelForm):
             'placeholder': 'Nationality',
             'class': 'form-control',
         }))
-    # salary = forms.CharField(label='Salary', widget=forms.TextInput(
-    #     attrs={
-    #         'placeholder': 'Salary',
-    #         'class': 'form-control',
-    #     }))
 
     class Meta:
         model = Employees
@@ -175,40 +187,28 @@ class UpdateEmployeeForm(forms.ModelForm):
             'country',
             'nationality',
             'marital_status',
-            # 'salary',
         ]
-
-    # def clean_salary(self):
-    #     salary = self.cleaned_data.get('salary')
-    #     position = self.cleaned_data.get('position')
-    #     if position == 'Employee':
-    #         if int(salary) < 5000 or int(salary) > 10000:
-    #             raise forms.ValidationError('salary for employee must be between 5000-10000')
-    #     if position == 'Manager':
-    #         if int(salary) < 10000 or int(salary) > 19000:
-    #             raise forms.ValidationError('salary for manager must be between 10000-19000')
-    #     if position == 'CEO':
-    #         if int(salary) < 19000 or int(salary) > 25000:
-    #             raise forms.ValidationError('salary for CEO must be between 19000-25000')
-    #     return salary
 
 
 class UpdateSalaryForm(forms.ModelForm):
     position = forms.CharField(widget=forms.HiddenInput)
-    salary = forms.CharField(label='Salary', widget=forms.TextInput(
+    salary = forms.IntegerField(label='Salary', widget=forms.TextInput(
         attrs={
             'placeholder': 'Salary',
             'class': 'form-control',
+            'type': 'number',
         }))
-    deduction = forms.CharField(label='Deduction', widget=forms.TextInput(
+    deduction = forms.IntegerField(label='Deduction', widget=forms.TextInput(
         attrs={
             'placeholder': 'Deduction',
             'class': 'form-control',
+            'type': 'number',
         }))
-    earning = forms.CharField(label='Earning', widget=forms.TextInput(
+    earning = forms.IntegerField(label='Earning', widget=forms.TextInput(
         attrs={
             'placeholder': 'Earning',
             'class': 'form-control',
+            'type': 'number',
         }))
 
     class Meta:
@@ -241,15 +241,17 @@ class AddRelationForm(forms.ModelForm):
             'placeholder': 'Name',
             'class': 'form-control',
         }))
-    age = forms.CharField(label='Age', widget=forms.TextInput(
+    age = forms.IntegerField(label='Age', widget=forms.TextInput(
         attrs={
             'placeholder': 'Age',
             'class': 'form-control',
+            'type': 'number',
         }))
-    date_of_birth = forms.CharField(label='Date Of Birth', widget=forms.TextInput(
+    date_of_birth = forms.DateField(label='Date Of Birth', widget=forms.TextInput(
         attrs={
             'placeholder': 'Date Of Birth',
             'class': 'form-control',
+            'type': 'date',
         }))
 
     class Meta:

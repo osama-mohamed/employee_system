@@ -123,6 +123,7 @@ class AddRelationView(View):
 
     def post(self, request, pk):
         form = self.form_class(request.POST)
+        print(form.errors)
         if form.is_valid():
             qs = Employees.objects.filter(id=pk, activated=True, freeze=False).first()
             relation = Relationship.objects.create(
@@ -133,6 +134,9 @@ class AddRelationView(View):
                 date_of_birth=form.cleaned_data.get('date_of_birth'),
             )
             return redirect('employees:all')
+        else:
+            messages.error(request, 'you can not add relation to this employee')
+            return redirect('employees:add-relation', pk=self.kwargs['pk'])
 
 
 # show all relations for married employees
@@ -168,11 +172,13 @@ class UpdateRelationView(UpdateView):
 
 # delete relation from married employees
 class DeleteRelationView(DeleteView):
+    queryset = Relationship.objects.all()
     template_name = 'employees/all_relations.html'
+    success_url = reverse_lazy('employees:all')
 
-    def post(self, request, pk):
-        qs = Relationship.objects.filter(id=pk)
-        if qs.exists() and qs.count() == 1:
-            relation = qs.first()
-            relation.delete()
-            return redirect(reverse('employees:all'))
+    # def post(self, request, pk):
+    #     qs = Relationship.objects.filter(id=pk)
+    #     if qs.exists() and qs.count() == 1:
+    #         relation = qs.first()
+    #         relation.delete()
+    #         return redirect(reverse('employees:all'))
