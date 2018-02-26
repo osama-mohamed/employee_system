@@ -1,5 +1,3 @@
-# employee_system
-
 # [Employee System]() By Django
 
 [<img src="https://www.djangoproject.com/s/img/logos/django-logo-negative.png" width="200" title="Employee System" >]()
