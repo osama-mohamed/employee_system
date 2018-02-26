@@ -19,6 +19,7 @@ from .forms import (
 from .models import Employees, Relationship
 
 
+# add new employee
 class AddEmployeeView(CreateView):
     form_class = AddEmployeeForm
     template_name = 'employees/add_new_employee.html'
@@ -30,6 +31,7 @@ class AddEmployeeView(CreateView):
         return context
 
 
+# show all employees
 class AllEmployeesView(ListView):
     template_name = 'employees/all_employees.html'
 
@@ -43,6 +45,7 @@ class AllEmployeesView(ListView):
         return context
 
 
+# show employee detail
 class EmployeeDetailView(DetailView):
     template_name = 'employees/employee_detail.html'
 
@@ -56,6 +59,7 @@ class EmployeeDetailView(DetailView):
         return context
 
 
+# update employee information except salary
 class EmployeeUpdateView(UpdateView):
     form_class = UpdateEmployeeForm
     model = Employees
@@ -71,6 +75,7 @@ class EmployeeUpdateView(UpdateView):
         return context
 
 
+# update employee salary, deduction and earning
 class SalaryUpdateView(UpdateView):
     form_class = UpdateSalaryForm
     model = Employees
@@ -86,6 +91,7 @@ class SalaryUpdateView(UpdateView):
         return context
 
 
+# delete employee if not connected to a job
 class EmployeeDeleteView(DeleteView):
     template_name = 'employees/employee_detail.html'
 
@@ -102,6 +108,7 @@ class EmployeeDeleteView(DeleteView):
             return redirect(reverse('employees:all'))
 
 
+# add relation to married employees
 class AddRelationView(View):
     form_class = AddRelationForm
     template_name = 'employees/add_new_relation.html'
@@ -128,6 +135,7 @@ class AddRelationView(View):
             return redirect('employees:all')
 
 
+# show all relations for married employees
 class AllRelationsView(ListView):
     template_name = 'employees/all_relations.html'
 
@@ -141,6 +149,7 @@ class AllRelationsView(ListView):
         return context
 
 
+# update relation for married employees
 class UpdateRelationView(UpdateView):
     form_class = AddRelationForm
     model = Relationship
@@ -157,6 +166,7 @@ class UpdateRelationView(UpdateView):
         return context
 
 
+# delete relation from married employees
 class DeleteRelationView(DeleteView):
     template_name = 'employees/all_relations.html'
 
