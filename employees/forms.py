@@ -220,6 +220,20 @@ class UpdateSalaryForm(forms.ModelForm):
             'earning',
         ]
 
+    def clean_salary(self):
+        salary = self.cleaned_data.get('salary')
+        position = self.cleaned_data.get('position')
+        if position == 'Employee':
+            if int(salary) < 5000 or int(salary) > 10000:
+                raise forms.ValidationError('salary for employee must be between 5000-10000')
+        if position == 'Manager':
+            if int(salary) < 10000 or int(salary) > 19000:
+                raise forms.ValidationError('salary for manager must be between 10000-19000')
+        if position == 'CEO':
+            if int(salary) < 19000 or int(salary) > 25000:
+                raise forms.ValidationError('salary for CEO must be between 19000-25000')
+        return salary
+
 
 class AddRelationForm(forms.ModelForm):
     name = forms.CharField(label='Name', widget=forms.TextInput(

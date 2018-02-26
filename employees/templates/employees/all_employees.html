@@ -30,6 +30,9 @@
 {#                <a href="{% url 'employees:detail' emp.id %}" class="btn btn-primary">#}
 {#                    See Profile#}
 {#                </a>#}
+              {% if emp.freeze == True %}
+                  <p class="lead">This employee was frozen</p>
+              {% else %}
                 <a href="{% url 'employees:update' emp.id %}" class="btn btn-info">
                     <i class="fa fa-user"></i> Update
                 </a>
@@ -50,6 +53,7 @@
                 <a href="{% url 'employees:add-relation' emp.id %}" class="btn btn-success">
                     <i class="fa fa-plus"></i> Add Relation
                 </a>
+              {% endif %}
               {% endif %}
               </div>
             </div>

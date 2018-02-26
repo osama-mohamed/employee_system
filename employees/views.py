@@ -62,7 +62,7 @@ class EmployeeUpdateView(UpdateView):
     template_name = 'employees/employee_update.html'
 
     def get_queryset(self):
-        qs = Employees.objects.filter(id=self.kwargs['pk'], activated=True)
+        qs = Employees.objects.filter(id=self.kwargs['pk'], activated=True, freeze=False)
         return qs
 
     def get_context_data(self, **kwargs):
@@ -77,7 +77,7 @@ class SalaryUpdateView(UpdateView):
     template_name = 'employees/employee_update.html'
 
     def get_queryset(self):
-        qs = Employees.objects.filter(id=self.kwargs['pk'], activated=True)
+        qs = Employees.objects.filter(id=self.kwargs['pk'], activated=True, freeze=False)
         return qs
 
     def get_context_data(self, **kwargs):
@@ -90,12 +90,14 @@ class EmployeeDeleteView(DeleteView):
     template_name = 'employees/employee_detail.html'
 
     def post(self, request, pk):
-        qs = Employees.objects.filter(id=pk).first()
+        qs = Employees.objects.filter(id=pk, freeze=False).first()
         job_status = qs.job
         if job_status is None or job_status == '':
             qs.delete()
             return redirect(reverse('employees:all'))
         else:
+            qs.freeze = True
+            qs.save()
             messages.error(request, 'you can not delete this employee because he has a job')
             return redirect(reverse('employees:all'))
 
@@ -115,7 +117,7 @@ class AddRelationView(View):
     def post(self, request, pk):
         form = self.form_class(request.POST)
         if form.is_valid():
-            qs = Employees.objects.filter(id=pk, activated=True).first()
+            qs = Employees.objects.filter(id=pk, activated=True, freeze=False).first()
             relation = Relationship.objects.create(
                 employee=qs,
                 relationship_type=form.cleaned_data.get('relationship_type'),

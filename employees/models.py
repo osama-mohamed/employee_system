@@ -35,6 +35,7 @@ class Employees(models.Model):
     deduction = models.PositiveIntegerField(default=0, null=True)
     earning = models.PositiveIntegerField(default=0, null=True)
     activated = models.BooleanField(default=True)
+    freeze = models.BooleanField(default=False)
     added = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
