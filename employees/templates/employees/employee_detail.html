@@ -7,28 +7,30 @@
 {% endblock %}
 
 {% block body %}
-    <div class="row">
-      <div class="caption">
-        <h2>Full Name : {{ object.full_name }}</h2>
-        <p class="lead">First Name : {{ object.first_name }}</p>
-        <p class="lead">Middle Name : {{ object.middle_name }}</p>
-        <p class="lead">Last Name : {{ object.last_name }}</p>
-        <p class="lead">Age : {{ object.age }}</p>
-        <p class="lead">National Identifier : {{ object.national_identifier }}</p>
-        <p class="lead">Gender : {{ object.gender }}</p>
-        <p class="lead">Date Of Birth : {{ object.date_of_birth }}</p>
-        <p class="lead">Place Of Birth : {{ object.place_of_birth }}</p>
-        <p class="lead">Position : {{ object.position }}</p>
-        <p class="lead">Job : {{ object.job }}</p>
-        <p class="lead">Country : {{ object.country }}</p>
-        <p class="lead">Nationality : {{ object.nationality }}</p>
-        <p class="lead">Marital Status : {{ object.marital_status }}</p>
-        <p class="lead">Main Salary : {{ object.salary }}</p>
-        <p class="lead">Earning : {{ object.earning }}</p>
-        <p class="lead">Deduction : {{ object.deduction }}</p>
-        <p class="lead">Net Salary : {{ object.salary |add:object.earning |sub:object.deduction }}</p>
-        <p class="lead">Joined In : {{ object.added }}</p>
-        <p class="lead">profile update date : {{ object.updated }}</p>
-      </div>
+    <div class="container">
+        <div class="row">
+          <div class="caption">
+            <h2>Full Name : {{ object.full_name }}</h2>
+            <p class="lead">First Name : {{ object.first_name }}</p>
+            <p class="lead">Middle Name : {{ object.middle_name }}</p>
+            <p class="lead">Last Name : {{ object.last_name }}</p>
+            <p class="lead">Age : {{ object.age }}</p>
+            <p class="lead">National Identifier : {{ object.national_identifier }}</p>
+            <p class="lead">Gender : {{ object.gender }}</p>
+            <p class="lead">Date Of Birth : {{ object.date_of_birth }}</p>
+            <p class="lead">Place Of Birth : {{ object.place_of_birth }}</p>
+            <p class="lead">Position : {{ object.position }}</p>
+            <p class="lead">Job : {{ object.job }}</p>
+            <p class="lead">Country : {{ object.country }}</p>
+            <p class="lead">Nationality : {{ object.nationality }}</p>
+            <p class="lead">Marital Status : {{ object.marital_status }}</p>
+            <p class="lead">Main Salary : {{ object.salary }}</p>
+            <p class="lead">Earning : {{ object.earning }}</p>
+            <p class="lead">Deduction : {{ object.deduction }}</p>
+            <p class="lead">Net Salary : {{ object.salary |add:object.earning |sub:object.deduction }}</p>
+            <p class="lead">Joined In : {{ object.added }}</p>
+            <p class="lead">profile update date : {{ object.updated }}</p>
+          </div>
+        </div>
     </div>
 {% endblock %}
