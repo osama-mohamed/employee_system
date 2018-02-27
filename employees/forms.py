@@ -93,7 +93,11 @@ class AddEmployeeForm(forms.ModelForm):
         qs = Employees.objects.filter(national_identifier__iexact=national_identifier)
         if qs.exists():
             raise forms.ValidationError('This Employee is already Added before!')
-        return national_identifier
+        if int(national_identifier) <= 0:
+            raise forms.ValidationError('National Identifier must be bigger than 0!')
+        if len(str(national_identifier)) < 14 or len(str(national_identifier)) > 14:
+            raise forms.ValidationError('National Identifier must be 14 number!')
+        return int(national_identifier)
 
     def clean_salary(self):
         salary = self.cleaned_data.get('salary')
