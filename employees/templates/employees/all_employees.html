@@ -29,7 +29,7 @@
                 <p>Marital Status : {{ emp.marital_status }}</p>
 {#                <p>Salary : {{ emp.salary }}</p>#}
               {% if emp.freeze == True %}
-                  <p class="lead">This employee was frozen</p>
+                  <p class="lead text-center" style="color: #f00;">This employee is frozen</p>
               {% else %}
                 <a href="{% url 'employees:update' emp.id %}" class="btn btn-info btn-raised">
                     <i class="fa fa-user"></i> Update
