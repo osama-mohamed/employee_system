@@ -27,6 +27,7 @@
 {#                <p>Country : {{ emp.country }}</p>#}
 {#                <p>Nationality : {{ emp.nationality }}</p>#}
                 <p>Marital Status : {{ emp.marital_status }}</p>
+                <p>Number of Relations : {{ emp.relationship_set.all.count }}</p>
 {#                <p>Salary : {{ emp.salary }}</p>#}
               {% if emp.freeze == True %}
                   <p class="lead text-center" style="color: #f00;">This employee is frozen</p>
