@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.views.generic import (
     CreateView,
     ListView,
@@ -17,18 +17,6 @@ from .forms import (
     UpdateSalaryForm,
 )
 from .models import Employees, Relationship
-
-
-# add new employee
-class AddEmployeeView(CreateView):
-    form_class = AddEmployeeForm
-    template_name = 'employees/add_new_employee.html'
-    success_url = reverse_lazy('employees:all')
-
-    def get_context_data(self, **kwargs):
-        context = super(AddEmployeeView, self).get_context_data(**kwargs)
-        context['title'] = 'Add Employee'
-        return context
 
 
 # show all employees
@@ -56,6 +44,17 @@ class EmployeeDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(EmployeeDetailView, self).get_context_data(**kwargs)
         context['title'] = 'Employee'
+        return context
+
+
+# add new employee
+class AddEmployeeView(CreateView):
+    form_class = AddEmployeeForm
+    template_name = 'employees/add_new_employee.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(AddEmployeeView, self).get_context_data(**kwargs)
+        context['title'] = 'Add Employee'
         return context
 
 
@@ -108,6 +107,20 @@ class EmployeeDeleteView(DeleteView):
             return redirect(reverse('employees:all'))
 
 
+# show all relations for married employees
+class AllRelationsView(ListView):
+    template_name = 'employees/all_relations.html'
+
+    def get_queryset(self):
+        qs = Relationship.objects.filter(employee_id=self.kwargs['pk']).order_by('-id')
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super(AllRelationsView, self).get_context_data(**kwargs)
+        context['title'] = 'All Relations'
+        return context
+
+
 # add relation to married employees
 class AddRelationView(View):
     form_class = AddRelationForm
@@ -132,7 +145,7 @@ class AddRelationView(View):
                 age=form.cleaned_data.get('age'),
                 date_of_birth=form.cleaned_data.get('date_of_birth'),
             )
-            return redirect('employees:all-relations', pk=pk)
+            return redirect(reverse('employees:all-relations', kwargs={'pk': pk}))
         else:
             messages.error(request, 'you can not add relation to this employee')
             context = {
@@ -140,20 +153,6 @@ class AddRelationView(View):
                 'title': 'Add Relation'
             }
             return render(request, self.template_name, context)
-
-
-# show all relations for married employees
-class AllRelationsView(ListView):
-    template_name = 'employees/all_relations.html'
-
-    def get_queryset(self):
-        qs = Relationship.objects.filter(employee_id=self.kwargs['pk']).order_by('-id')
-        return qs
-
-    def get_context_data(self, **kwargs):
-        context = super(AllRelationsView, self).get_context_data(**kwargs)
-        context['title'] = 'All Relations'
-        return context
 
 
 # update relation for married employees
