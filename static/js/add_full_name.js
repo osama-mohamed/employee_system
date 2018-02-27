@@ -10,7 +10,11 @@ $(function () {
         updateFullName()
     });
     function updateFullName() {
-        $('input[name=full_name]').val([firstName + ' ' + lastName]);
+        if ($('input[name=first_name]').val() === '' && $('input[name=last_name]').val() === '') {
+            $('input[name=full_name]').val('');
+        } else {
+            $('input[name=full_name]').val([firstName + ' ' + lastName]);
+        }
     }
 
 
