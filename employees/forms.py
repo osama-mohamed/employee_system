@@ -189,6 +189,14 @@ class UpdateEmployeeForm(forms.ModelForm):
             'marital_status',
         ]
 
+    def clean_national_identifier(self):
+        national_identifier = self.cleaned_data.get('national_identifier')
+        if int(national_identifier) <= 0:
+            raise forms.ValidationError('National Identifier must be bigger than 0!')
+        if len(str(national_identifier)) < 14 or len(str(national_identifier)) > 14:
+            raise forms.ValidationError('National Identifier must be 14 number!')
+        return int(national_identifier)
+
 
 class UpdateSalaryForm(forms.ModelForm):
     position = forms.CharField(widget=forms.HiddenInput)
