@@ -15,3 +15,20 @@ form.form-group p > select{
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+/*.id {*/
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*right: 15px;*/
+  /*padding: 12px;*/
+  /*border-radius: 0 4px 0 12px;*/
+  /*background-color: #3498db;*/
+  /*color: #fff;*/
+  /*!*border: 1px solid #ccc;*!*/
+/*}*/
+
+/*.id i{*/
+    /*!*color:#3498db;*!*/
+    /*!*color:#d9534f;*!*/
+  /*cursor: pointer;*/
+/*}*/

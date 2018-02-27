@@ -13,6 +13,11 @@
             <div class="col-sm-4">
             <div class="thumbnail">
               <div class="caption">
+{#              {% if emp.freeze == False %}#}
+{#                  <div class="id">#}
+{#                        <i class="fa fa-times" data-toggle="modal" data-target="#delete_employee{{ emp.id }}"></i>#}
+{#                  </div>#}
+{#              {% endif %}#}
                   <h4>Full Name : <a href="{% url 'employees:detail' emp.id %}">{{ emp.full_name }}</a></h4>
 {#                <p class="lead">First Name : {{ emp.first_name }}</p>#}
 {#                <p>Middle Name : {{ emp.middle_name }}</p>#}
@@ -21,7 +26,7 @@
 {#                <p>National Identifier : {{ emp.national_identifier }}</p>#}
                 <p>Gender : {{ emp.gender }}</p>
 {#                <p>Date Of Birth : {{ emp.date_of_birth }}</p>#}
-                <p>Place Of Birth : {{ emp.place_of_birth }}</p>
+                <p>Place of Birth : {{ emp.place_of_birth }}</p>
                 <p>Position : {{ emp.position }}</p>
                 <p>Job : {{ emp.job }}</p>
 {#                <p>Country : {{ emp.country }}</p>#}
@@ -30,8 +35,10 @@
                 <p>Number of Relations : {{ emp.relationship_set.all.count }}</p>
 {#                <p>Salary : {{ emp.salary }}</p>#}
               {% if emp.freeze == True %}
+                  <br>
                   <p class="lead text-center" style="color: #f00;">This employee is frozen</p>
               {% else %}
+{#                <a href="{% url 'employees:detail' emp.id %}" class="btn btn-primary">See Profile</a>#}
                 <a href="{% url 'employees:update' emp.id %}" class="btn btn-info btn-raised">
                     <i class="fa fa-user"></i> Update
                 </a>
