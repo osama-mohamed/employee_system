@@ -1,6 +1,5 @@
 $(function () {
-    var firstName = '';
-    var lastName = '';
+    var firstName = '', lastName = '';
     $('input[name=first_name]').on('keyup keypress blur change', function () {
         firstName = $(this).val();
         updateFullName()
@@ -28,7 +27,12 @@ $(function () {
     //   updateFullName();
     // });
     // function updateFullName(){
-    //   $('input[name="full_name"]').val( vals.join(' ') );
+    //   // $('input[name="full_name"]').val( vals.join(' ') );
+    //   if ($('input[name="first_name"]').val() === '' && $('input[name="last_name"]').val() === '') {
+    //       $('input[name="full_name"]').val('');
+    //   } else {
+    //       $('input[name="full_name"]').val( vals.join(' ') );
+    //   }
     // }
 
 
