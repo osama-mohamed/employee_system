@@ -262,3 +262,9 @@ class AddRelationForm(forms.ModelForm):
             'age',
             'date_of_birth',
         ]
+
+    def clean_age(self):
+        age = self.cleaned_data.get('age')
+        if int(age) <= 0:
+            raise forms.ValidationError('Age must be bigger than 0!')
+        return age

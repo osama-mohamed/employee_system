@@ -135,7 +135,11 @@ class AddRelationView(View):
             return redirect('employees:all')
         else:
             messages.error(request, 'you can not add relation to this employee')
-            return redirect('employees:add-relation', pk=self.kwargs['pk'])
+            context = {
+                'form': form,
+                'title': 'Add Relation'
+            }
+            return render(request, self.template_name, context)
 
 
 # show all relations for married employees
