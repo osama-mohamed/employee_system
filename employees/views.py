@@ -180,4 +180,7 @@ class UpdateRelationView(UpdateView):
 class DeleteRelationView(DeleteView):
     queryset = Relationship.objects.all()
     template_name = 'employees/all_relations.html'
-    success_url = reverse_lazy('employees:all')
+
+    def get_success_url(self):
+        employee_id = Relationship.objects.filter(id=self.kwargs['pk']).first().employee_id
+        return reverse_lazy('employees:all-relations', kwargs={'pk': employee_id})
