@@ -132,7 +132,7 @@ class AddRelationView(View):
                 age=form.cleaned_data.get('age'),
                 date_of_birth=form.cleaned_data.get('date_of_birth'),
             )
-            return redirect('employees:all')
+            return redirect('employees:all-relations', pk=pk)
         else:
             messages.error(request, 'you can not add relation to this employee')
             context = {
