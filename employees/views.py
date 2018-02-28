@@ -176,6 +176,7 @@ class AllRelationsView(ListView):
         context = super(AllRelationsView, self).get_context_data(**kwargs)
         context['title'] = 'All Relations'
         context['name'] = Employees.objects.filter(id=self.kwargs['pk']).first().full_name
+        context['id'] = Employees.objects.filter(id=self.kwargs['pk']).first().id
         return context
 
 
