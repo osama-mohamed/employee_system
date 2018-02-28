@@ -107,8 +107,8 @@ class SalaryUpdateView(View):
 
     def post(self, request, pk):
         form = self.form_class(request.POST)
+        employee = Employees.objects.filter(id=pk, activated=True, freeze=False).first()
         if form.is_valid():
-            employee = Employees.objects.filter(id=pk, activated=True, freeze=False).first()
             current_salary = employee.salary
             updated_salary = form.cleaned_data.get('salary')
             if current_salary != updated_salary:
@@ -141,7 +141,8 @@ class SalaryUpdateView(View):
             messages.error(request, 'you can not Update salary for this employee')
             context = {
                 'form': form,
-                'title': 'Update Salary'
+                'title': 'Update Salary',
+                'name': employee.full_name,
             }
             return render(request, self.template_name, context)
 
@@ -174,6 +175,7 @@ class AllRelationsView(ListView):
     def get_context_data(self, **kwargs):
         context = super(AllRelationsView, self).get_context_data(**kwargs)
         context['title'] = 'All Relations'
+        context['name'] = Employees.objects.filter(id=self.kwargs['pk']).first().full_name
         return context
 
 
