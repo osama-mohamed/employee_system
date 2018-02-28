@@ -6,57 +6,42 @@
 
 {% block body %}
     <div class="row">
-        <h1 class="text-center"><i class="fa fa-users"></i> All Employees</h1>
+        <h2 class="text-center"><i class="fa fa-users"></i> All Employees</h2>
         <br>
         <br>
         {% for emp in object_list %}
             <div class="col-sm-4">
             <div class="thumbnail">
               <div class="caption">
-{#              {% if emp.freeze == False %}#}
-{#                  <div class="id">#}
-{#                        <i class="fa fa-times" data-toggle="modal" data-target="#delete_employee{{ emp.id }}"></i>#}
-{#                  </div>#}
-{#              {% endif %}#}
-                  <h4>Full Name : <a href="{% url 'employees:detail' emp.id %}">{{ emp.full_name }}</a></h4>
-{#                <p class="lead">First Name : {{ emp.first_name }}</p>#}
-{#                <p>Middle Name : {{ emp.middle_name }}</p>#}
-{#                <p>Last Name : {{ emp.last_name }}</p>#}
+                  <h4>Full Name : <br><a href="{% url 'employees:detail' emp.id %}">{{ emp.full_name }}</a></h4>
                 <p>Age : {{ emp.age }}</p>
-{#                <p>National Identifier : {{ emp.national_identifier }}</p>#}
                 <p>Gender : {{ emp.gender }}</p>
-{#                <p>Date Of Birth : {{ emp.date_of_birth }}</p>#}
                 <p>Place of Birth : {{ emp.place_of_birth }}</p>
                 <p>Position : {{ emp.position }}</p>
                 <p>Job : {{ emp.job }}</p>
-{#                <p>Country : {{ emp.country }}</p>#}
-{#                <p>Nationality : {{ emp.nationality }}</p>#}
                 <p>Marital Status : {{ emp.marital_status }}</p>
                 <p>Number of Relations : {{ emp.relationship_set.all.count }}</p>
-{#                <p>Salary : {{ emp.salary }}</p>#}
               {% if emp.freeze == True %}
-                  <br>
-                  <p class="lead text-center" style="color: #f00;">This employee is frozen</p>
+                  <p class="lead text-center" style="color: #f00; margin-top: 18px;">This employee is frozen</p>
               {% else %}
-{#                <a href="{% url 'employees:detail' emp.id %}" class="btn btn-primary">See Profile</a>#}
-                <a href="{% url 'employees:update' emp.id %}" class="btn btn-info btn-raised">
+                <a href="{% url 'employees:update' emp.id %}" class="btn btn-info btn-raised btn-sm">
                     <i class="fa fa-user"></i> Update
                 </a>
-                <a href="{% url 'employees:update-salary' emp.id %}" class="btn btn-default btn-raised">
+                <a href="{% url 'employees:update-salary' emp.id %}" class="btn btn-default btn-raised btn-sm">
                     <i class="fa fa-dollar-sign"></i>  Update Salary
                 </a>
                 <!-- Button trigger modal -->
-                <button class="btn btn-danger btn-raised" href="" data-toggle="modal" data-target="#delete_employee{{ emp.id }}">
+                <button class="btn btn-danger btn-raised btn-sm" href="" data-toggle="modal" data-target="#delete_employee{{ emp.id }}">
                     <i class="fa fa-times"></i> Delete
                 </button>
                 {% include 'employees/delete_employee_modal.html' %}
                   {% if emp.marital_status == 'Married' %}
                     <br>
                     <br>
-                    <a href="{% url 'employees:all-relations' emp.id %}" class="btn btn-primary btn-raised">
+                    <a href="{% url 'employees:all-relations' emp.id %}" class="btn btn-primary btn-raised btn-sm">
                         <i class="fa fa-users"></i> See Relations
                     </a>
-                    <a href="{% url 'employees:add-relation' emp.id %}" class="btn btn-success btn-raised">
+                    <a href="{% url 'employees:add-relation' emp.id %}" class="btn btn-success btn-raised btn-sm">
                         <i class="fa fa-plus"></i> Add Relation
                     </a>
                   {% else %}

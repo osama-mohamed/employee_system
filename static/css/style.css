@@ -3,32 +3,42 @@ ul.messages > li{
     color: red;
 }
 
-form.form-group p > select{
-    display: block;
-    width: 100%;
-    height: 34px;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+/*form.form-group p > select{*/
+    /*display: block;*/
+    /*width: 100%;*/
+    /*height: 34px;*/
+    /*padding: 6px 12px;*/
+    /*font-size: 14px;*/
+    /*line-height: 1.42857143;*/
+    /*color: #555;*/
+    /*background-color: #fff;*/
+    /*border: 1px solid #ccc;*/
+    /*border-radius: 4px;*/
+/*}*/
+
+.btn{
+    margin-right: 5px;
 }
 
-/*.id {*/
-  /*position: absolute;*/
-  /*top: 0;*/
-  /*right: 15px;*/
-  /*padding: 12px;*/
-  /*border-radius: 0 4px 0 12px;*/
-  /*background-color: #3498db;*/
-  /*color: #fff;*/
-  /*!*border: 1px solid #ccc;*!*/
-/*}*/
+.btn i, .btn-flat i {
+    font-size: 12px;
+    line-height: inherit;
+}
 
-/*.id i{*/
-    /*!*color:#3498db;*!*/
-    /*!*color:#d9534f;*!*/
-  /*cursor: pointer;*/
-/*}*/
+
+form.form-group p > select{
+    background-color: transparent;
+    border: 1px solid #9e9e9e;
+    border-radius: 0;
+    outline: 0;
+    height: 2rem;
+    width: 100%;
+    font-size: 1rem;
+    margin: 0 0 15px;
+    padding: 0;
+    box-shadow: none;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    transition: all .3s;
+}

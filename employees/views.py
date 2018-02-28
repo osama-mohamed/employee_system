@@ -131,7 +131,7 @@ class SalaryUpdateView(View):
                     employee.earning = deduction
                     employee.save()
             elif current_salary == updated_salary:
-                employee.salary = form.cleaned_data.get('salary')
+                employee.salary = updated_salary
                 employee.deduction = form.cleaned_data.get('deduction')
                 employee.earning = form.cleaned_data.get('earning')
                 employee.save()
