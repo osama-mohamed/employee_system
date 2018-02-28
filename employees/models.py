@@ -34,6 +34,8 @@ class Employees(models.Model):
     salary = models.PositiveIntegerField()
     deduction = models.PositiveIntegerField(default=0, null=True)
     earning = models.PositiveIntegerField(default=0, null=True)
+    deduction_description = models.TextField(null=True)
+    earning_description = models.TextField(null=True)
     activated = models.BooleanField(default=True)
     freeze = models.BooleanField(default=False)
     added = models.DateTimeField(auto_now_add=True)
@@ -73,17 +75,14 @@ def post_save_employee_receiver(sender, instance, created, *args, **kwargs):
             if position == 'Employee':
                 deduction = (employee.salary * 7.5) / 100
                 employee.deduction = deduction
-                employee.earning = deduction
                 employee.save()
             if position == 'Manager':
                 deduction = (employee.salary * 12) / 100
                 employee.deduction = deduction
-                employee.earning = deduction
                 employee.save()
             if position == 'CEO':
                 deduction = (employee.salary * 15) / 100
                 employee.deduction = deduction
-                employee.earning = deduction
                 employee.save()
 
 

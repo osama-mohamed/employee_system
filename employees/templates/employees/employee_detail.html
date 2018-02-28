@@ -23,6 +23,7 @@
                 <p class="lead">Date Of Birth : {{ object.date_of_birth }}</p>
                 <p class="lead">Place Of Birth : {{ object.place_of_birth }}</p>
                 <p class="lead">Position : {{ object.position }}</p>
+                <p class="lead"><b>Earning Description  : </b>{{ object.earning_description | linebreaks }}</p>
             </div>
             <div class="col-sm-6">
                 <br>
@@ -36,6 +37,7 @@
                 <p class="lead">Net Salary : {{ object.salary |add:object.earning |sub:object.deduction }}</p>
                 <p class="lead">Joined In : {{ object.added | timesince}} ago.</p>
                 <p class="lead">profile update date : {{ object.updated | timesince}} ago.</p>
+                <p class="lead"><b>Deduction Description : </b>{{ object.deduction_description | linebreaks }}</p>
             </div>
         </div>
     </div>

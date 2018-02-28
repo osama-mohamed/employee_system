@@ -74,79 +74,23 @@ class EmployeeUpdateView(UpdateView):
         return context
 
 
-# # update employee salary, deduction and earning
-# class SalaryUpdateView(UpdateView):
-#     form_class = UpdateSalaryForm
-#     model = Employees
-#     template_name = 'employees/employee_update.html'
-#
-#     def get_queryset(self):
-#         qs = Employees.objects.filter(id=self.kwargs['pk'], activated=True, freeze=False)
-#         return qs
-#
-#     def get_context_data(self, **kwargs):
-#         context = super(SalaryUpdateView, self).get_context_data(**kwargs)
-#         context['title'] = 'Update Salary'
-#         return context
-
-
 # update employee salary, deduction and earning
-class SalaryUpdateView(View):
+class SalaryUpdateView(UpdateView):
     form_class = UpdateSalaryForm
+    model = Employees
     template_name = 'employees/update_employee_salary.html'
 
-    def get(self, request, pk):
-        queryset = get_object_or_404(Employees, pk=pk)
-        form = self.form_class(instance=queryset)
-        context = {
-            'form': form,
-            'title': 'Update Salary',
-            'name': queryset.full_name,
-            'id': queryset.id,
-        }
-        return render(request, self.template_name, context)
+    def get_queryset(self):
+        qs = Employees.objects.filter(id=self.kwargs['pk'], activated=True, freeze=False)
+        return qs
 
-    def post(self, request, pk):
-        form = self.form_class(request.POST)
-        employee = Employees.objects.filter(id=pk, activated=True, freeze=False).first()
-        if form.is_valid():
-            current_salary = employee.salary
-            updated_salary = form.cleaned_data.get('salary')
-            if current_salary != updated_salary:
-                position = employee.position
-                if position == 'Employee':
-                    deduction = (updated_salary * 7.5) / 100
-                    employee.salary = updated_salary
-                    employee.deduction = deduction
-                    employee.earning = deduction
-                    employee.save()
-                if position == 'Manager':
-                    deduction = (updated_salary * 12) / 100
-                    employee.salary = updated_salary
-                    employee.deduction = deduction
-                    employee.earning = deduction
-                    employee.save()
-                if position == 'CEO':
-                    deduction = (updated_salary * 15) / 100
-                    employee.salary = updated_salary
-                    employee.deduction = deduction
-                    employee.earning = deduction
-                    employee.save()
-            elif current_salary == updated_salary:
-                employee.salary = updated_salary
-                employee.deduction = form.cleaned_data.get('deduction')
-                employee.earning = form.cleaned_data.get('earning')
-                employee.save()
-            return redirect(reverse('employees:detail', kwargs={'pk': pk}))
-        else:
-            messages.error(request, 'you can not Update salary for this employee')
-            context = {
-                'form': form,
-                'title': 'Update Salary',
-                'name': employee.full_name,
-                'id': employee.id,
-            }
-            return render(request, self.template_name, context)
+    def get_context_data(self, **kwargs):
+        context = super(SalaryUpdateView, self).get_context_data(**kwargs)
+        context['title'] = 'Update Salary'
+        qs = Employees.objects.filter(id=self.kwargs['pk'], activated=True, freeze=False).first()
+        context['name'] = qs.full_name
+        context['id'] = qs.id
+        return context
 
 
 # delete employee if not connected to a job

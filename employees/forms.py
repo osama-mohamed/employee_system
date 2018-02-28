@@ -216,11 +216,21 @@ class UpdateSalaryForm(forms.ModelForm):
             'class': 'form-control',
             'type': 'number',
         }))
+    deduction_description = forms.CharField(label='Deduction Description', required=False, widget=forms.Textarea(
+        attrs={
+            'placeholder': 'Deduction Description',
+            'class': 'form-control',
+        }))
     earning = forms.IntegerField(label='Earning', widget=forms.TextInput(
         attrs={
             'placeholder': 'Earning',
             'class': 'form-control',
             'type': 'number',
+        }))
+    earning_description = forms.CharField(label='Earning Description', required=False, widget=forms.Textarea(
+        attrs={
+            'placeholder': 'Earning Description',
+            'class': 'form-control',
         }))
 
     class Meta:
@@ -229,7 +239,9 @@ class UpdateSalaryForm(forms.ModelForm):
             'position',
             'salary',
             'deduction',
+            'deduction_description',
             'earning',
+            'earning_description',
         ]
 
     def clean_salary(self):
