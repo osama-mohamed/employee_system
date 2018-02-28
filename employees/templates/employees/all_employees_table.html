@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }} | {{ block.super }}
+{% endblock %}
+
+{% block body %}
+    <h2 class="text-center"><i class="fa fa-users"></i> {{ title }}</h2>
+    <br>
+
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Full Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Place of Birth</th>
+            <th>Position</th>
+            <th>Job</th>
+            <th>Marital Status</th>
+            <th>Number of Relations</th>
+            <th>Update</th>
+            <th>Update Salary</th>
+            <th>Delete</th>
+            <th>See Relations</th>
+            <th>Add Relation</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for emp in object_list %}
+          <tr>
+            <td>{{ emp.full_name }}</td>
+            <td>{{ emp.age }}</td>
+            <td>{{ emp.gender }}</td>
+            <td>{{ emp.place_of_birth }}</td>
+            <td>{{ emp.position }}</td>
+            <td>{{ emp.job }}</td>
+            <td>{{ emp.marital_status }}</td>
+            <td>{{ emp.relationship_set.all.count }}</td>
+            {% if emp.freeze == True %}
+              <td>
+                  <span style="color: #f00; margin-top: 18px;">This employee is frozen</span>
+              </td>
+                <td></td>
+                <td></td>
+            {% else %}
+            <td>
+                <a href="{% url 'employees:update' emp.id %}" class="btn btn-info btn-raised btn-sm">
+                    <i class="fa fa-user"></i> Update
+                </a>
+            </td>
+            <td>
+                <a href="{% url 'employees:update-salary' emp.id %}" class="btn btn-default btn-raised btn-sm">
+                    <i class="fa fa-dollar-sign"></i>  Update Salary
+                </a>
+            </td>
+            <td>
+                <!-- Button trigger modal -->
+                <button class="btn btn-danger btn-raised btn-sm" href="" data-toggle="modal" data-target="#delete_employee{{ emp.id }}">
+                    <i class="fa fa-times"></i> Delete
+                </button>
+                {% include 'employees/delete_employee_modal.html' %}
+            </td>
+            {% endif %}
+            {% if emp.marital_status == 'Married' %}
+            <td>
+                <a href="{% url 'employees:all-relations' emp.id %}" class="btn btn-primary btn-raised btn-sm">
+                    <i class="fa fa-users"></i> See Relations
+                </a>
+            </td>
+            <td>
+                <a href="{% url 'employees:add-relation' emp.id %}" class="btn btn-success btn-raised btn-sm">
+                    <i class="fa fa-plus"></i> Add Relation
+                </a>
+            </td>
+            {% else %}
+                <td>
+                    <span>This employee is single</span>
+                </td>
+                <td></td>
+            {% endif %}
+          </tr>
+        {% empty %}
+            <p class="lead text-center">No employees yet</p>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

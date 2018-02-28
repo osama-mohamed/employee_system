@@ -22,6 +22,7 @@ from .models import Employees, Relationship
 # show all employees
 class AllEmployeesView(ListView):
     template_name = 'employees/all_employees.html'
+    # template_name = 'employees/all_employees_table.html'
 
     def get_queryset(self):
         qs = Employees.objects.filter(activated=True).order_by('-id')
