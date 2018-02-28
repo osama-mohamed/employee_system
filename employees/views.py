@@ -93,14 +93,15 @@ class EmployeeUpdateView(UpdateView):
 # update employee salary, deduction and earning
 class SalaryUpdateView(View):
     form_class = UpdateSalaryForm
-    template_name = 'employees/employee_update.html'
+    template_name = 'employees/update_employee_salary.html'
 
     def get(self, request, pk):
         queryset = get_object_or_404(Employees, pk=pk)
         form = self.form_class(instance=queryset)
         context = {
             'form': form,
-            'title': 'Update Salary'
+            'title': 'Update Salary',
+            'name': queryset.full_name,
         }
         return render(request, self.template_name, context)
 
@@ -214,7 +215,7 @@ class AddRelationView(View):
 class UpdateRelationView(UpdateView):
     form_class = AddRelationForm
     model = Relationship
-    template_name = 'employees/add_new_relation.html'
+    template_name = 'employees/update_relation.html'
 
     def get_success_url(self):
         employee_id = Relationship.objects.filter(id=self.kwargs['pk']).first().employee_id
