@@ -42,3 +42,7 @@ form.form-group p > select{
     box-sizing: content-box;
     transition: all .3s;
 }
+
+div.modal-footer{
+    padding: 6px;
+}

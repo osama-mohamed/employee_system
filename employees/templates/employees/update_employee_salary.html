@@ -6,7 +6,7 @@
 
 {% block body %}
     <div class="col-sm-offset-3 col-sm-6">
-        <h2 class="text-center"><i class="fa fa-user"></i> {{ title }} For {{ name }}</h2>
+        <h2 class="text-center"><i class="fa fa-user"></i> {{ title }} For <a href="{% url 'employees:detail' id %}">{{ name }}</a></h2>
         <br>
         {% include 'includes/form.html' %}
     </div>

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44818d28-d223-4cd3-8af5-986da1b8554e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employees/templates/employees/all_relations.html" afterPath="$PROJECT_DIR$/employees/templates/employees/all_relations.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employees/templates/employees/employee_update.html" afterPath="$PROJECT_DIR$/employees/templates/employees/employee_update.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employees/templates/employees/update_employee_salary.html" afterPath="$PROJECT_DIR$/employees/templates/employees/update_employee_salary.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employees/views.py" afterPath="$PROJECT_DIR$/employees/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/style.css" afterPath="$PROJECT_DIR$/static/css/style.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,7 +47,6 @@
         <option value="$PROJECT_DIR$/employees/forms.py" />
         <option value="$PROJECT_DIR$/static/js/add_full_name.js" />
         <option value="$PROJECT_DIR$/employees/templates/employees/employee_detail.html" />
-        <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/templates/includes/nav_bar.html" />
         <option value="$PROJECT_DIR$/templates/includes/js.html" />
         <option value="$PROJECT_DIR$/templates/includes/css.html" />
@@ -53,11 +54,12 @@
         <option value="$PROJECT_DIR$/employees/templates/employees/add_new_employee.html" />
         <option value="$PROJECT_DIR$/employees/templates/update_relation.html" />
         <option value="$PROJECT_DIR$/employees/templates/employees/update_relation.html" />
+        <option value="$PROJECT_DIR$/employees/templates/employees/all_employees.html" />
+        <option value="$PROJECT_DIR$/employees/templates/employees/all_relations.html" />
+        <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/employees/templates/employees/employee_update.html" />
         <option value="$PROJECT_DIR$/employees/templates/employees/update_employee_salary.html" />
-        <option value="$PROJECT_DIR$/employees/templates/employees/all_employees.html" />
         <option value="$PROJECT_DIR$/employees/views.py" />
-        <option value="$PROJECT_DIR$/employees/templates/employees/all_relations.html" />
       </list>
     </option>
   </component>
@@ -96,6 +98,24 @@
             <path>
               <item name="employee" type="b2602c69:ProjectViewProjectNode" />
               <item name="employee" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="employee" type="b2602c69:ProjectViewProjectNode" />
+              <item name="employee" type="462c0819:PsiDirectoryNode" />
+              <item name="employees" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="employee" type="b2602c69:ProjectViewProjectNode" />
+              <item name="employee" type="462c0819:PsiDirectoryNode" />
+              <item name="employees" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="employee" type="b2602c69:ProjectViewProjectNode" />
+              <item name="employee" type="462c0819:PsiDirectoryNode" />
+              <item name="employees" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="employees" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -293,14 +313,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-214">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/includes/js.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -369,14 +381,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/employees/templates/employees/employee_update.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="67" lean-forward="false" selection-start-line="8" selection-start-column="67" selection-end-line="8" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/employees/templates/employees/employee_detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -397,14 +401,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="16" column="23" lean-forward="false" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employees/templates/employees/update_employee_salary.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="72" lean-forward="false" selection-start-line="8" selection-start-column="72" selection-end-line="8" selection-end-column="72" />
           <folding />
         </state>
       </provider>
@@ -441,18 +437,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="46" column="14" lean-forward="false" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/employees/templates/employees/all_relations.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
-          <caret line="8" column="111" lean-forward="false" selection-start-line="8" selection-start-column="111" selection-end-line="8" selection-end-column="111" />
+          <caret line="8" column="118" lean-forward="false" selection-start-line="8" selection-start-column="76" selection-end-line="8" selection-end-column="118" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employees/templates/employees/employee_update.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="120" lean-forward="false" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="120" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employees/templates/employees/update_employee_salary.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="110" lean-forward="false" selection-start-line="8" selection-start-column="110" selection-end-line="8" selection-end-column="110" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/employees/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="178" column="81" lean-forward="false" selection-start-line="178" selection-start-column="81" selection-end-line="178" selection-end-column="81" />
+        <state relative-caret-position="-198">
+          <caret line="88" column="32" lean-forward="false" selection-start-line="88" selection-start-column="32" selection-end-line="88" selection-end-column="32" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
           </folding>

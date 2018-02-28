@@ -102,6 +102,7 @@ class SalaryUpdateView(View):
             'form': form,
             'title': 'Update Salary',
             'name': queryset.full_name,
+            'id': queryset.id,
         }
         return render(request, self.template_name, context)
 
@@ -143,6 +144,7 @@ class SalaryUpdateView(View):
                 'form': form,
                 'title': 'Update Salary',
                 'name': employee.full_name,
+                'id': employee.id,
             }
             return render(request, self.template_name, context)
 
