@@ -7,6 +7,9 @@
 {% block body %}
     <div class="row">
         <h2 class="text-center"><i class="fa fa-users"></i> {{ title }} For <a href="{% url 'employees:detail' id %}">{{ name }}</a></h2>
+        <a href="{% url 'employees:add-relation' id %}" class="btn btn-success btn-raised" style="display: table; margin: 0 auto;">
+            <i class="fa fa-plus"></i> Add Relation
+        </a>
         <br>
         {% for emp in object_list %}
             <div class="col-sm-4">
