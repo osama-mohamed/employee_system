@@ -13,30 +13,30 @@
             <br>
             <div class="col-sm-6">
                 <br>
-                <p class="lead">Full Name : {{ object.full_name }}</p>
-                <p class="lead">First Name : {{ object.first_name }}</p>
-                <p class="lead">Middle Name : {{ object.middle_name }}</p>
-                <p class="lead">Last Name : {{ object.last_name }}</p>
-                <p class="lead">Age : {{ object.age }}</p>
-                <p class="lead">National Identifier : {{ object.national_identifier }}</p>
-                <p class="lead">Gender : {{ object.gender }}</p>
-                <p class="lead">Date Of Birth : {{ object.date_of_birth }}</p>
-                <p class="lead">Place Of Birth : {{ object.place_of_birth }}</p>
-                <p class="lead">Position : {{ object.position }}</p>
+                <p class="lead"><b>Full Name : </b>{{ object.full_name }}</p>
+                <p class="lead"><b>First Name : </b>{{ object.first_name }}</p>
+                <p class="lead"><b>Middle Name : </b>{{ object.middle_name }}</p>
+                <p class="lead"><b>Last Name : </b>{{ object.last_name }}</p>
+                <p class="lead"><b>Age : </b>{{ object.age }}</p>
+                <p class="lead"><b>National Identifier : </b>{{ object.national_identifier }}</p>
+                <p class="lead"><b>Gender : </b>{{ object.gender }}</p>
+                <p class="lead"><b>Date Of Birth : </b>{{ object.date_of_birth }}</p>
+                <p class="lead"><b>Place Of Birth : </b>{{ object.place_of_birth }}</p>
+                <p class="lead"><b>Position : </b>{{ object.position }}</p>
                 <p class="lead"><b>Earning Description  : </b>{{ object.earning_description | linebreaks }}</p>
             </div>
             <div class="col-sm-6">
                 <br>
-                <p class="lead">Job : {{ object.job }}</p>
-                <p class="lead">Country : {{ object.country }}</p>
-                <p class="lead">Nationality : {{ object.nationality }}</p>
-                <p class="lead">Marital Status : {{ object.marital_status }}</p>
-                <p class="lead">Main Salary : {{ object.salary }}</p>
-                <p class="lead">Earning : {{ object.earning }}</p>
-                <p class="lead">Deduction : {{ object.deduction }}</p>
-                <p class="lead">Net Salary : {{ object.salary |add:object.earning |sub:object.deduction }}</p>
-                <p class="lead">Joined In : {{ object.added | timesince}} ago.</p>
-                <p class="lead">profile update date : {{ object.updated | timesince}} ago.</p>
+                <p class="lead"><b>Job : </b>{{ object.job }}</p>
+                <p class="lead"><b>Country : </b>{{ object.country }}</p>
+                <p class="lead"><b>Nationality : </b>{{ object.nationality }}</p>
+                <p class="lead"><b>Marital Status : </b>{{ object.marital_status }}</p>
+                <p class="lead"><b>Joined In : </b>{{ object.added | timesince}} ago.</p>
+                <p class="lead"><b>profile update date : </b>{{ object.updated | timesince}} ago.</p>
+                <p class="lead"><b>Main Salary : </b>{{ object.salary }}</p>
+                <p class="lead"><b>Earning : </b>{{ object.earning }}</p>
+                <p class="lead"><b>Deduction : </b>{{ object.deduction }}</p>
+                <p class="lead"><b>Net Salary : </b>{{ object.salary |add:object.earning |sub:object.deduction }}</p>
                 <p class="lead"><b>Deduction Description : </b>{{ object.deduction_description | linebreaks }}</p>
             </div>
         </div>

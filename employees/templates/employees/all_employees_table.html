@@ -29,7 +29,7 @@
         <tbody>
         {% for emp in object_list %}
           <tr>
-            <td>{{ emp.full_name }}</td>
+            <td><a href="{% url 'employees:detail' emp.id %}">{{ emp.full_name }}</a></td>
             <td>{{ emp.age }}</td>
             <td>{{ emp.gender }}</td>
             <td>{{ emp.place_of_birth }}</td>
