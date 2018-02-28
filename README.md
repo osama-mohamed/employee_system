@@ -6,7 +6,10 @@
 
 
 ## For live preview :
-> [Employee System](https://employee-osama-mohamed-django.herokuapp.com)
+> [Employee System Cards Layout](https://employee-osama-mohamed-django.herokuapp.com)
+
+
+> [Employee System Table Layout](https://employee2-osama-mohamed-django.herokuapp.com)
 
 
 ## Employee System website contains:
